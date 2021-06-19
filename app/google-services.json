@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "432667500956",
+    "project_id": "oshoppingapp-e46fa",
+    "storage_bucket": "oshoppingapp-e46fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432667500956:android:53ec687a7cf8ae27eda859",
+        "android_client_info": {
+          "package_name": "com.example.android.oshoppingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432667500956-lclc7vgjlgktadlb6plf7cre5s8uve69.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.oshoppingapp",
+            "certificate_hash": "5b563d26127bbb31a1ca3a1f0f96e5eaaf3cfe08"
+          }
+        },
+        {
+          "client_id": "432667500956-nmok9ernn1timkci73otk9f13l6deue7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGLDDZhu5sUFoeNYFvz_JnuE4wQ-n5F6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432667500956-nmok9ernn1timkci73otk9f13l6deue7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

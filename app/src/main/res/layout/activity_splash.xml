@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity"
+    android:background="@drawable/gradient_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/koshk"
+        android:layout_centerInParent="true"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="@dimen/splash_title_text_size"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tvAppName"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/your_shopping_pal"
+        android:textColor="@color/white"
+        android:textSize="@dimen/splash_text_size"
+        android:textStyle="bold" />
+
+</RelativeLayout>

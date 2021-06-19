@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">Koshk</string>
+    <string name="koshk">KOSHK</string>
+    <string name="your_shopping_pal">Your shopping PAL</string>
+    <string name="LOGIN">LOGIN</string>
+    <string name="login_image">Login Image</string>
+    <string name="telephone_number">Telephone Number</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="don_t_have_account_already">Don\'t have account already?</string>
+    <string name="e_mail">E-MAIL ID</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="REGISTER">REGISTER</string>
+    <string name="already_hane_an_account">Already hane an account?</string>
+    <string name="create_an_account">CREATE AN ACCOUNT</string>
+    <string name="i_agree_to_the_terms_and_conditions">I Agree to the Terms and Conditions</string>
+    <string name="login">Login</string>
+
+
+    <string name="err_msg_enter_first_name">Please enter first name.</string>
+    <string name="err_msg_enter_last_name">Please enter last name.</string>
+    <string name="err_msg_enter_email">Please enter email.</string>
+    <string name="err_msg_enter_password">Please enter password.</string>
+    <string name="err_msg_enter_confirm_password">Please enter confirm password.</string>
+    <string name="err_msg_password_and_confirm_password_mismatch">Password and confirm password does not match.</string>
+    <string name="err_msg_agree_terms_and_condition">Please agree terms and condition.</string>
+    <string name="vertification_code">Vertification Code</string>
+    <string name="confirmation_code">Confirmation Code</string>
+    <string name="vertify_message">The Confirmation Code has been Sent to The Phone Number That you Entered</string>
+    <string name="err_msg_enter_Telephone_number">Please enter your telephone number</string>
+    <string name="otp_vertification">OTP Vertification</string>
+    <string name="enter_the_otp_sent_to">Enter the OTP sent to</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="didn_t_receive_the_otp">Didn\'t Receive The OTP?</string>
+    <string name="confirm">Confirm</string>
+    <string name="i_agree_to_the_terms_and_condition">Agree to Terms and Conditions</string>
+    <string name="please_wait">Pleasw Wait</string>
+    <string name="lbl_forgot_password">Forget Password ?</string>
+    <string name="content_description">screen background</string>
+
+    <string name="title_forgot_password">FORGOT PASSWORD?</string>
+    <string name="forgot_password_title_description">Enter your username and e-mail address we\'ll send you a email to reset your password</string>
+    <string name="btn_lbl_submit">Submit</string>
+    <string name="et_hint_email_id">E-MAIL ID</string>
+    <string name="email_sent_success">\"Email sent Successfully to reset your password !  \"</string>
+
+    <!--END-->
+</resources>
