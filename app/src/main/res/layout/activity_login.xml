@@ -10,8 +10,20 @@
     <FrameLayout
         android:id="@+id/fl_header_image"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/frame_header_height"
         android:background="@drawable/login_gradient_background">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingStart="@dimen/toolbar_title_paddingStart"
+            android:paddingEnd="0dp"
+            android:textStyle="bold"
+            android:text="@string/koshk"
+            android:textColor="@color/white"
+            android:textSize="@dimen/toolbar_title_text_size" />
 
 
     </FrameLayout>

@@ -1,0 +1,8 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+<item><!-- Edit hex colors as you like -->
+    <shape android:shape="rectangle" >
+        <gradient
+            android:angle="180"
+            android:endColor="@color/darkBlue"
+            android:startColor="@color/lightBlue" />
+    </shape></item></layer-list>

@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowManager
+import android.widget.Toast
 import com.example.android.oshoppingapp.databinding.ActivityRegistryBinding
+import com.example.android.oshoppingapp.firestore.FireStoreClass
+import com.example.android.oshoppingapp.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.ktx.Firebase
 
 
 @Suppress("DEPRECATION")
@@ -111,32 +115,39 @@ class RegistryActivity : BaseActivity() {
             FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                     OnCompleteListener<AuthResult> { task ->
-                        hideProgressDialog()
-
                         // If the registration is successfully done
                         if (task.isSuccessful) {
 
                             // Firebase registered user
                             val firebaseUser: FirebaseUser = task.result!!.user!!
+                            val user=User(
+                                firebaseUser.uid,
+                                binding.etFirstNAmeRegistry.text.toString().trim{ it <= ' '},
+                                binding.etLastNameRegistry.text.toString().trim{ it <= ' '},
+                                binding.etEmailRegistry.text.toString().trim{ it <= ' '},
+                                )
 
-                            showErrorSnackBar(
-                                "You are registered successfully. Your user id is ${firebaseUser.uid}",
-                                false
-                            )
+                            FireStoreClass().registerUser(this@RegistryActivity,user)
 
-                            /**
-                             * Here the new user registered is automatically signed-in so we just sign-out the user from firebase
-                             * and send him to Login Screen.
-                             */
-                            FirebaseAuth.getInstance().signOut()
+                           // FirebaseAuth.getInstance().signOut()
                             // Finish the Register Screen
-                            finish()
+                            //finish()
                         } else {
+                            hideProgressDialog()
                             // If the registering is not successful then show error message.
                             showErrorSnackBar(task.exception!!.message.toString(), true)
                         }
                     })
         }
+    }
+
+    fun userRegistrationSuccess(){
+
+        hideProgressDialog()
+
+        Toast.makeText(this,
+            resources.getString(R.string.register_success),Toast.LENGTH_SHORT).show()
+
     }
 
 }

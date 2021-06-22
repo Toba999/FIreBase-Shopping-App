@@ -15,4 +15,7 @@
     <color name="colorPrimaryText">#222934</color>
     <color name="colorSnackBarError">#F72400</color>
     <color name="colorSnackBarSuccess">#8BC34A</color>
+
+    <color name="colorLightGray">#F1F1F1</color>
+
 </resources>

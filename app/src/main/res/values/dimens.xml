@@ -17,6 +17,7 @@
     <dimen name="btn_textSize">18sp</dimen>
     <dimen name="btn_padding">8dp</dimen>
     <dimen name="lbl_text_view_textSize">16sp</dimen>
+    <dimen name="frame_header_height">60dp</dimen>
 
     <dimen name="toolbar_title_paddingStart">-25dp</dimen>
     <dimen name="toolbar_title_text_size">18sp</dimen>
@@ -31,4 +32,13 @@
     <dimen name="forgot_password_title_description_textSize">14dp</dimen>
     <!--END-->
 
+    <dimen name="user_image_background_stroke">4dp</dimen>
+    <dimen name="user_image_background_corner_radius">10dp</dimen>
+    <dimen name="profile_user_image_size">150dp</dimen>
+    <dimen name="profile_user_image_marginTop">50dp</dimen>
+    <dimen name="profile_user_photo_margin">3dp</dimen>
+    <dimen name="profile_radio_button_height">40dp</dimen>
+    <dimen name="profile_radio_button_marginStartEnd">3dp</dimen>
+    <dimen name="gender_radio_button_radius">25dp</dimen>
+    <dimen name="gender_radio_button_stroke_width">1dp</dimen>
 </resources>

@@ -36,7 +36,7 @@
     <string name="didn_t_receive_the_otp">Didn\'t Receive The OTP?</string>
     <string name="confirm">Confirm</string>
     <string name="i_agree_to_the_terms_and_condition">Agree to Terms and Conditions</string>
-    <string name="please_wait">Pleasw Wait</string>
+    <string name="please_wait">Please Wait…</string>
     <string name="lbl_forgot_password">Forget Password ?</string>
     <string name="content_description">screen background</string>
 
@@ -45,6 +45,21 @@
     <string name="btn_lbl_submit">Submit</string>
     <string name="et_hint_email_id">E-MAIL ID</string>
     <string name="email_sent_success">\"Email sent Successfully to reset your password !  \"</string>
+    <string name="register_success">You are registered successfully</string>
+
+    <string name="title_complete_profile">COMPLETE PROFILE</string>
+    <string name="et_hint_mobile_number">Mobile Number</string>
+    <string name="rb_lbl_male">MALE</string>
+    <string name="rb_lbl_female">FEMALE</string>
+    <string name="btn_lbl_save">Save</string>
+    <string name="my_profile">My Profile</string>
+    <string name="image_selection_failed">Image selection failed !</string>
+    <string name="err_msg_enter_mobile_number">Please enter you mobile number </string>
+    <string name="msg_profile_update_success">Your Profile updated successfully  </string>
+
+
+
+    <string name="read_storage_permission_denied">Oops, you just denied the permission for storage. You can also allow it from settings.</string>
 
     <!--END-->
 </resources>
