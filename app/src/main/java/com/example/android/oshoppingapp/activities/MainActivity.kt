@@ -1,4 +1,4 @@
-package com.example.android.oshoppingapp
+package com.example.android.oshoppingapp.activities
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity

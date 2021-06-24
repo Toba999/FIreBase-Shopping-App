@@ -1,4 +1,4 @@
-package com.example.android.oshoppingapp
+package com.example.android.oshoppingapp.activities
 
 import android.Manifest
 import android.app.Activity
@@ -10,9 +10,9 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.android.oshoppingapp.R
 import com.example.android.oshoppingapp.databinding.ActivityUserProfileBinding
 import com.example.android.oshoppingapp.firestore.FireStoreClass
 import com.example.android.oshoppingapp.models.User
@@ -39,19 +39,57 @@ class UserProfileActivity : BaseActivity(),View.OnClickListener {
             mUserDetails=intent.getParcelableExtra(Constants.EXTRA_USER_DETAILS)!!
         }
 
-        binding.etFirstNAme.isEnabled=false
         binding.etFirstNAme.setText(mUserDetails.firstName)
-
-        binding.etLastName.isEnabled=false
         binding.etLastName.setText(mUserDetails.lastName)
-
-        binding.etEmail.isEnabled=false
         binding.etEmail.setText(mUserDetails.email)
+        binding.etEmail.isEnabled=false
+
+
+        if (mUserDetails.profileCompleted == 0) {
+            // Update the title of the screen to complete profile.
+            binding.tvTitle.text = resources.getString(R.string.title_complete_profile)
+            binding.etFirstNAme.isEnabled=false
+            binding.etLastName.isEnabled=false
+        } else {
+            binding.etFirstNAme.isEnabled=true
+            binding.etLastName.isEnabled=true
+            // Call the setup action bar function.
+            setupActionBar()
+            // Update the title of the screen to edit profile.
+            binding.tvTitle.text = resources.getString(R.string.title_edit_profile)
+            // Load the image using the GlideLoader class with the use of Glide Library.
+            GlideLoader(this@UserProfileActivity).loadUserPicture(mUserDetails.image
+                , binding.ivUserPhoto)
+            // Set the existing values to the UI and allow user to edit except the Email ID.
+            if (mUserDetails.mobile != 0L) {
+                binding.etMobileNumber.setText(mUserDetails.mobile.toString())
+            }
+            if (mUserDetails.gender == Constants.MALE) {
+                binding.rbMale.isChecked = true
+            } else {
+                binding.rbFemale.isChecked = true
+            }
+        }
+
 
         // Assign the on click event to the user profile photo.
         binding.ivUserPhoto.setOnClickListener(this@UserProfileActivity)
 
         binding.btnSubmit.setOnClickListener(this@UserProfileActivity)
+
+    }
+
+    private fun setupActionBar() {
+
+        setSupportActionBar(binding.toolbarUserProfileActivity)
+
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
+        }
+
+        binding.toolbarUserProfileActivity.setNavigationOnClickListener { onBackPressed() }
 
     }
 
@@ -95,6 +133,16 @@ class UserProfileActivity : BaseActivity(),View.OnClickListener {
 
         val userHashMap = HashMap<String, Any>()
 
+        val firstName = binding.etFirstNAme.text.toString().trim { it <= ' ' }
+        if (firstName != mUserDetails.firstName) {
+            userHashMap[Constants.FIRST_NAME] = firstName
+        }
+
+        val lastName = binding.etLastName.text.toString().trim { it <= ' ' }
+        if (lastName != mUserDetails.lastName) {
+            userHashMap[Constants.LAST_NAME] = lastName
+        }
+
         val mobileNumber = binding.etMobileNumber.text.toString().trim { it <= ' ' }
 
         val gender = if (binding.rbMale.isChecked) {
@@ -103,7 +151,7 @@ class UserProfileActivity : BaseActivity(),View.OnClickListener {
             Constants.FEMALE
         }
 
-        if (mobileNumber.isNotEmpty()) {
+        if (mobileNumber.isNotEmpty()&& mobileNumber != mUserDetails.mobile.toString()) {
             userHashMap[Constants.MOBILE] = mobileNumber.toLong()
         }
 
@@ -111,7 +159,9 @@ class UserProfileActivity : BaseActivity(),View.OnClickListener {
             userHashMap[Constants.IMAGE] = mUserPofileImageURL
         }
 
-        userHashMap[Constants.GENDER] = gender
+        if (gender.isNotEmpty() && gender != mUserDetails.gender) {
+            userHashMap[Constants.GENDER] = gender
+        }
 
         userHashMap[Constants.COMPLETE_PROFILE] = 1
 
@@ -182,7 +232,6 @@ class UserProfileActivity : BaseActivity(),View.OnClickListener {
     }
 
     fun userProfileUpdateSuccess() {
-
         // Hide the progress dialog
         hideProgressDialog()
 
@@ -192,9 +241,8 @@ class UserProfileActivity : BaseActivity(),View.OnClickListener {
             Toast.LENGTH_SHORT
         ).show()
 
-
         // Redirect to the Main Screen after profile completion.
-        startActivity(Intent(this@UserProfileActivity, MainActivity::class.java))
+        startActivity(Intent(this@UserProfileActivity, DashboardActivity::class.java))
         finish()
     }
 

@@ -5,9 +5,10 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import com.example.android.oshoppingapp.LoginActivity
-import com.example.android.oshoppingapp.RegistryActivity
-import com.example.android.oshoppingapp.UserProfileActivity
+import com.example.android.oshoppingapp.activities.LoginActivity
+import com.example.android.oshoppingapp.activities.RegistryActivity
+import com.example.android.oshoppingapp.activities.SettingsActivity
+import com.example.android.oshoppingapp.activities.UserProfileActivity
 import com.example.android.oshoppingapp.models.User
 import com.example.android.oshoppingapp.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
@@ -88,6 +89,9 @@ class FireStoreClass {
                         // Call a function of base activity for transferring the result to it.
                         activity.userLoggedInSuccess(user)
                     }
+                    is SettingsActivity -> {
+                        activity.userDetailsSuccess(user)
+                    }
                 }
                 // END
             }
@@ -95,6 +99,9 @@ class FireStoreClass {
                 // Hide the progress dialog if there is any error. And print the error in log.
                 when (activity) {
                     is LoginActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is SettingsActivity -> {
                         activity.hideProgressDialog()
                     }
                 }

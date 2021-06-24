@@ -1,10 +1,10 @@
-package com.example.android.oshoppingapp
+package com.example.android.oshoppingapp.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.WindowManager
 import android.widget.Toast
+import com.example.android.oshoppingapp.R
 import com.example.android.oshoppingapp.databinding.ActivityRegistryBinding
 import com.example.android.oshoppingapp.firestore.FireStoreClass
 import com.example.android.oshoppingapp.models.User
@@ -12,7 +12,6 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.ktx.Firebase
 
 
 @Suppress("DEPRECATION")

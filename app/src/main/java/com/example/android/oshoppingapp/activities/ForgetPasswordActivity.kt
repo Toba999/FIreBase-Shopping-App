@@ -1,8 +1,8 @@
-package com.example.android.oshoppingapp
+package com.example.android.oshoppingapp.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.example.android.oshoppingapp.R
 import com.example.android.oshoppingapp.databinding.ActivityForgetPasswordBinding
 import com.google.firebase.auth.FirebaseAuth
 

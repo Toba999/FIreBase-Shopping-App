@@ -1,11 +1,10 @@
- package com.example.android.oshoppingapp
+ package com.example.android.oshoppingapp.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
+import com.example.android.oshoppingapp.R
 import com.example.android.oshoppingapp.databinding.ActivityLoginBinding
 import com.example.android.oshoppingapp.firestore.FireStoreClass
 import com.example.android.oshoppingapp.models.User
