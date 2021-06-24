@@ -58,8 +58,11 @@
     <string name="msg_profile_update_success">Your Profile updated successfully  </string>
 
 
-
     <string name="read_storage_permission_denied">Oops, you just denied the permission for storage. You can also allow it from settings.</string>
+    <string name="title_activity_dashboard">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
     <!--END-->
 </resources>
