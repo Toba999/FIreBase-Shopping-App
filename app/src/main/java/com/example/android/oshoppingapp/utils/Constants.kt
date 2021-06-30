@@ -13,6 +13,13 @@ object Constants {
     const val USERS: String = "users"
     const val PRODUCTS: String = "products"
 
+   //constant variable for products
+    const val TITLE : String = "title"
+    const val PRICE: String = "price"
+    const val DESCRIPTION: String = "description"
+    const val STOCK_QUANTITY: String = "stock_quantity"
+    const val PRODUCT_ID: String = "product_id"
+
     const val MYSHOPPAL_PREFERENCES: String = "MyShopPalPrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
 

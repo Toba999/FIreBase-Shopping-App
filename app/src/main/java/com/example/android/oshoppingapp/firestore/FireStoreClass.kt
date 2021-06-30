@@ -181,6 +181,9 @@ class FireStoreClass{
                             is AddProductActivity -> {
                                 activity.imageUploadSuccess(uri.toString())
                             }
+                            is EditProductActivity -> {
+                                activity.imageUploadSuccess(uri.toString())
+                            }
                         }
                     }
             }
@@ -191,6 +194,9 @@ class FireStoreClass{
                         activity.hideProgressDialog()
                     }
                     is AddProductActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is EditProductActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -219,6 +225,25 @@ class FireStoreClass{
 
                     Log.e(activity.javaClass.simpleName,
                             "Error while uploading the product details.", e)
+                }
+    }
+
+    fun updateProductDetails(activity: EditProductActivity,  productHashMap: HashMap<String, Any>,productId: String) {
+
+        mFireStore.collection(Constants.PRODUCTS)
+                .document(productId)
+                // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
+                .update(productHashMap)
+                .addOnSuccessListener {
+                    // Here call a function of base activity for transferring the result to it.
+                    activity.productUpdateSuccess()
+                }
+                .addOnFailureListener { e ->
+
+                    activity.hideProgressDialog()
+
+                    Log.e(activity.javaClass.simpleName,
+                            "Error while updating the product details.", e)
                 }
     }
 

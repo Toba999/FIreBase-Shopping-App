@@ -103,5 +103,6 @@
     <string name="lbl_product_description">Product Description</string>
     <string name="lbl_product_details_stock_quantity">Stock Quantity</string>
     <string name="title_edit_product">Edit Product</string>
+    <string name="product_updated_success_message">Product updated successfully</string>
     <!--END-->
 </resources>

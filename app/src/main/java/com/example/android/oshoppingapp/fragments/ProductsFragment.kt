@@ -18,6 +18,7 @@ import com.example.android.oshoppingapp.adapters.MyProductsListAdapter
 import com.example.android.oshoppingapp.databinding.FragmentProductsBinding
 import com.example.android.oshoppingapp.firestore.FireStoreClass
 import com.example.android.oshoppingapp.models.Product
+import com.example.android.oshoppingapp.utils.Constants
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ProductsFragment : BaseFragment() {
@@ -114,7 +115,7 @@ class ProductsFragment : BaseFragment() {
 
     fun editProduct(productID: String) {
         val intent =Intent(requireActivity(),EditProductActivity::class.java)
-        intent.putExtra("productID",productID)
+        intent.putExtra(Constants.EXTRA_PRODUCT_ID,productID)
         startActivity(intent)
 
     }
