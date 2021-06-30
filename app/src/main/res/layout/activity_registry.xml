@@ -123,7 +123,7 @@
                     android:layout_height="wrap_content"
                     tools:checked="false"
                     android:gravity="center"
-                    android:background="@drawable/et_background"/>
+                    android:background="@drawable/tv_background"/>
 
                 <TextView
                     android:paddingStart="10dp"

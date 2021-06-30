@@ -72,6 +72,36 @@
     <string name="btn_lbl_logout">Log Out</string>
     <string name="lbl_addresses">Adresses</string>
     <string name="title_edit_profile">Edit Profile</string>
+    <string name="action_add_product">Add product</string>
+    <string name="title_add_product">Add product</string>
+    <string name="et_hint_product_title">Product title</string>
+    <string name="et_hint_product_price">Product price</string>
+    <string name="et_hint_product_description">Product description</string>
+    <string name="et_hint_product_quantity">Product quantity</string>
 
+
+    <string name="err_msg_select_product_image">Please select product image.</string>
+    <string name="err_msg_enter_product_title">Please enter product title.</string>
+    <string name="err_msg_enter_product_price">Please enter product price.</string>
+    <string name="err_msg_enter_product_description">Please enter product description.</string>
+    <string name="err_msg_enter_product_quantity">Please enter product quantity.</string>
+
+    <string name="product_uploaded_success_message">Your product is uploaded successfully.</string>
+    <string name="no_products_added_yet">No products added yet!</string>
+    <string name="no_dashboard_item_found">No items found!</string>
+    <string name="home">Home</string>
+    <string name="title_home">Home</string>
+
+
+    <string name="product_delete_success_message">Your product is deleted successfully.</string>
+    <string name="delete_dialog_title">Delete</string>
+    <string name="delete_dialog_message">Are you sure you want to delete the product?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="title_product_details">PRODUCT DETAILS</string>
+    <string name="lbl_product_description">Product Description</string>
+    <string name="lbl_product_details_stock_quantity">Stock Quantity</string>
+    <string name="title_edit_product">Edit Product</string>
     <!--END-->
 </resources>

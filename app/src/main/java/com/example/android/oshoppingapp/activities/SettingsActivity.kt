@@ -1,23 +1,21 @@
 package com.example.android.oshoppingapp.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.google.firebase.auth.FirebaseAuth
 import com.example.android.oshoppingapp.R
 import com.example.android.oshoppingapp.databinding.ActivitySettingsBinding
 import com.example.android.oshoppingapp.firestore.FireStoreClass
+import com.example.android.oshoppingapp.models.User
 import com.example.android.oshoppingapp.utils.Constants
 import com.example.android.oshoppingapp.utils.GlideLoader
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.auth.User
 
-class SettingsActivity : BaseActivity() , View.OnClickListener{
+class SettingsActivity : BaseActivity(), View.OnClickListener {
 
-    private lateinit var mUserDetails: com.example.android.oshoppingapp.models.User
+    private lateinit var mUserDetails: User
 
-
-    private lateinit var binding: ActivitySettingsBinding
+    private lateinit var binding:ActivitySettingsBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivitySettingsBinding.inflate(layoutInflater)
@@ -25,42 +23,9 @@ class SettingsActivity : BaseActivity() , View.OnClickListener{
 
         setupActionBar()
 
+
         binding.tvEdit.setOnClickListener(this@SettingsActivity)
-
-        binding.btnLogout.setOnClickListener ( this@SettingsActivity )
-
-    }
-
-    private fun setupActionBar() {
-
-        setSupportActionBar(binding.toolbarSettingsActivity)
-
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
-        }
-
-        binding.toolbarSettingsActivity.setNavigationOnClickListener { onBackPressed() }
-
-    }
-
-    private fun getUserDetails(){
-        showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getUserDetails(this)
-    }
-
-    fun userDetailsSuccess(user:com.example.android.oshoppingapp.models.User){
-
-        mUserDetails=user
-        hideProgressDialog()
-
-        GlideLoader(this).loadUserPicture(user.image,binding.ivUserPhoto)
-        binding.tvName.text="${user.firstName} ${user.lastName}"
-        binding.tvGender.text=user.gender
-        binding.tvEmail.text=user.email
-        binding.tvMobileNumber.text= "${ user.mobile }"
-
+        binding.btnLogout.setOnClickListener(this@SettingsActivity)
     }
 
     override fun onResume() {
@@ -78,16 +43,50 @@ class SettingsActivity : BaseActivity() , View.OnClickListener{
                 }
 
                 R.id.btn_logout -> {
-
                     FirebaseAuth.getInstance().signOut()
-
                     val intent = Intent(this@SettingsActivity, LoginActivity::class.java)
                     intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
                     finish()
                 }
-
             }
         }
+    }
+
+
+    private fun setupActionBar() {
+
+        setSupportActionBar(binding.toolbarSettingsActivity)
+
+        val actionBar = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_white_color_back_24dp)
+        }
+
+        binding.toolbarSettingsActivity.setNavigationOnClickListener { onBackPressed() }
+    }
+
+    private fun getUserDetails() {
+
+        // Show the progress dialog
+        showProgressDialog(resources.getString(R.string.please_wait))
+
+        // Call the function of Firestore class to get the user details from firestore which is already created.
+        FireStoreClass().getUserDetails(this@SettingsActivity)
+    }
+
+
+    fun userDetailsSuccess(user: User) {
+        mUserDetails = user
+        // Hide the progress dialog
+        hideProgressDialog()
+        // Load the image using the Glide Loader class.
+        GlideLoader(this@SettingsActivity).loadUserPicture(user.image, binding.ivUserPhoto)
+
+        binding.tvName.text = "${user.firstName} ${user.lastName}"
+        binding.tvGender.text = user.gender
+        binding.tvEmail.text = user.email
+        binding.tvMobileNumber.text = "${user.mobile}"
     }
 }

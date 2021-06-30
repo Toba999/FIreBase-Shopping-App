@@ -32,11 +32,10 @@
         android:layout_width="350dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp"
         android:contentDescription="@string/login_image"
         android:src="@drawable/im_login" />
     <LinearLayout
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -103,13 +102,12 @@
             android:textStyle="bold"
             android:textColor="@color/white"
             android:textSize="@dimen/btn_textSize"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:paddingEnd="120dp"
             android:padding="10dp"
             android:paddingStart="120dp"/>
 
         <LinearLayout
-            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

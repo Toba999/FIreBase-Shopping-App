@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.android.oshoppingapp.R
 
 class OrdersFragment : Fragment() {
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,9 +23,7 @@ class OrdersFragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_orders, container, false)
-        val textView: TextView = root.findViewById(R.id.text_notifications)
-            textView.text = "this is notification fragment"
-
+        
         return root
     }
 }
