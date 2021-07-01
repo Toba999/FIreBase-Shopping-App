@@ -22,7 +22,7 @@ import com.example.android.oshoppingapp.utils.Constants
 import com.example.android.oshoppingapp.utils.GlideLoader
 import java.io.IOException
 
-class EditProductActivity : BaseActivity(),View.OnClickListener {
+class EditProductActivity : BaseActivity(), View.OnClickListener {
 
     private var mSelectedImageFileUri: Uri? = null
 
@@ -33,7 +33,7 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
     private lateinit var binding: ActivityEditProductBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityEditProductBinding.inflate(layoutInflater)
+        binding = ActivityEditProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (intent.hasExtra(Constants.EXTRA_PRODUCT_ID)) {
@@ -80,33 +80,33 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
                 binding.ivProductImage
         )
 
-        mProductImageURL=product.image
+        mProductImageURL = product.image
 
         binding.etProductTitle.setText(product.title)
-        binding.etProductPrice.setText("$${product.price}")
+        binding.etProductPrice.setText("${product.price}")
         binding.etProductDescription.setText(product.description)
         binding.etProductQuantity.setText(product.stock_quantity)
     }
 
     override fun onClick(v: View?) {
-        if(v !=null){
-            when(v.id){
+        if (v != null) {
+            when (v.id) {
                 R.id.iv_add_update_product -> {
                     if (ContextCompat.checkSelfPermission(this,
                                     Manifest.permission.READ_EXTERNAL_STORAGE)
-                            == PackageManager.PERMISSION_GRANTED)
-                    {
+                            == PackageManager.PERMISSION_GRANTED) {
                         Constants.showImageChooser(this)
                     } else {
                         ActivityCompat.requestPermissions(this,
                                 arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                                Constants.READ_STORAGE_PERMISSION_CODE) }
+                                Constants.READ_STORAGE_PERMISSION_CODE)
+                    }
                 }
                 R.id.btn_submit -> {
                     if (validateProductDetails()) {
-                        if(mSelectedImageFileUri == null){
+                        if (mSelectedImageFileUri == null) {
                             updateProductDetails()
-                        }else{
+                        } else {
                             uploadProductImage()
                         }
                     }
@@ -118,8 +118,8 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
     override fun onRequestPermissionsResult(
             requestCode: Int,
             permissions: Array<out String>,
-            grantResults: IntArray)
-    { super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+            grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == Constants.READ_STORAGE_PERMISSION_CODE) {
             //If permission is granted
             if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
@@ -139,8 +139,7 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK
                 && requestCode == Constants.PICK_IMAGE_REQUEST_CODE
-                && data!!.data != null)
-        { // Replace the add icon with edit icon once the image is selected.
+                && data!!.data != null) { // Replace the add icon with edit icon once the image is selected.
             binding.ivAddUpdateProduct.setImageDrawable(
                     ContextCompat.getDrawable(this,
                             R.drawable.ic_vector_edit))
@@ -158,18 +157,14 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
 
     private fun validateProductDetails(): Boolean {
         return when {
-
-
             TextUtils.isEmpty(binding.etProductTitle.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_product_title), true)
                 false
             }
-
             TextUtils.isEmpty(binding.etProductPrice.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(resources.getString(R.string.err_msg_enter_product_price), true)
                 false
             }
-
             TextUtils.isEmpty(binding.etProductDescription.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                         resources.getString(R.string.err_msg_enter_product_description),
@@ -177,7 +172,6 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
                 )
                 false
             }
-
             TextUtils.isEmpty(binding.etProductQuantity?.text.toString().trim { it <= ' ' }) -> {
                 showErrorSnackBar(
                         resources.getString(R.string.err_msg_enter_product_quantity),
@@ -205,9 +199,7 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
 
     private fun updateProductDetails() {
         val productHashMap = HashMap<String, Any>()
-
         // Here we get the text from editText and trim the space
-
         val productTitle = binding.etProductTitle.text.toString().trim { it <= ' ' }
         productHashMap[Constants.TITLE] = productTitle
 
@@ -220,9 +212,9 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
         val productQuantity = binding.etProductQuantity.text.toString().trim { it <= ' ' }
         productHashMap[Constants.STOCK_QUANTITY] = productQuantity
 
-        productHashMap[Constants.IMAGE] =  mProductImageURL
+        productHashMap[Constants.IMAGE] = mProductImageURL
 
-        FireStoreClass().updateProductDetails(this,productHashMap,mProductId)
+        FireStoreClass().updateProductDetails(this, productHashMap, mProductId)
     }
 
 
