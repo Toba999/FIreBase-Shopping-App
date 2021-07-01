@@ -68,7 +68,6 @@ class EditProductActivity : BaseActivity(),View.OnClickListener {
         // Show the product dialog
         showProgressDialog(resources.getString(R.string.please_wait))
 
-        // Call the function of FirestoreClass to get the product details.
         FireStoreClass().getProductDetails(this@EditProductActivity, mProductId)
     }
 
