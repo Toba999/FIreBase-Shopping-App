@@ -242,17 +242,12 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
 
     fun userProfileUpdateSuccess() {
-
         // Hide the progress dialog
         hideProgressDialog()
-
         Toast.makeText(
                 this@UserProfileActivity,
                 resources.getString(R.string.msg_profile_update_success),
-                Toast.LENGTH_SHORT
-        ).show()
-
-
+                Toast.LENGTH_SHORT).show()
         // Redirect to the Main Screen after profile completion.
         startActivity(Intent(this@UserProfileActivity, DashboardActivity::class.java))
         finish()
@@ -260,9 +255,7 @@ class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
 
     fun imageUploadSuccess(imageURL: String) {
-
         mUserProfileImageURL = imageURL
-
         updateUserProfileDetails()
     }
 }

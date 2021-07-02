@@ -2,12 +2,15 @@ package com.example.android.oshoppingapp.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.oshoppingapp.activities.ProductDetailsActivity
 import com.example.android.oshoppingapp.databinding.ItemHomeLayoutBinding
 import com.example.android.oshoppingapp.models.Product
+import com.example.android.oshoppingapp.utils.Constants
 import com.example.android.oshoppingapp.utils.GlideLoader
 
 open class HomeItemsListAdapter(
@@ -40,9 +43,10 @@ open class HomeItemsListAdapter(
             holder.viewBinding.tvHomeItemPrice.text = "$${model.price}"
 
             holder.itemView.setOnClickListener {
-                if (onClickListener != null) {
-                    onClickListener!!.onClick(position, model)
-                }
+                val intent= Intent(context, ProductDetailsActivity::class.java)
+                intent.putExtra(Constants.EXTRA_PRODUCT_ID,model.product_id)
+                intent.putExtra(Constants.EXTRA_PRODUCT_OWNER_ID,model.user_id)
+                context.startActivity(intent)
             }
         }
     }

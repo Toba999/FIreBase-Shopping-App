@@ -11,6 +11,7 @@ import com.example.android.oshoppingapp.activities.*
 import com.example.android.oshoppingapp.fragments.HomeFragment
 import com.example.android.oshoppingapp.fragments.ProductsFragment
 import com.example.android.oshoppingapp.fragments.ProfileFragment
+import com.example.android.oshoppingapp.models.CartItem
 import com.example.android.oshoppingapp.models.Product
 import com.example.android.oshoppingapp.models.User
 import com.example.android.oshoppingapp.utils.Constants
@@ -124,8 +125,6 @@ class FireStoreClass{
                     "Error while getting user details.", e)
             }
     }
-
-
 
     fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
         // Collection Name
@@ -367,6 +366,22 @@ class FireStoreClass{
                 }
 
                 Log.e(activity.javaClass.simpleName, "Error while getting the product details.", e)
+            }
+    }
+
+    fun addCartItems(activity: ProductDetailsActivity, addToCart: CartItem) {
+        mFireStore.collection(Constants.CART_ITEMS)
+            .document()
+            // Here the userInfo are Field and the SetOption is set to merge. It is for if we wants to merge
+            .set(addToCart, SetOptions.merge())
+            .addOnSuccessListener {
+                // Here call a function of base activity for transferring the result to it.
+                activity.addToCartSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName,
+                    "Error while creating the document for cart item.", e)
             }
     }
 

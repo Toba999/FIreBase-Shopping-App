@@ -104,5 +104,9 @@
     <string name="lbl_product_details_stock_quantity">Stock Quantity</string>
     <string name="title_edit_product">Edit Product</string>
     <string name="product_updated_success_message">Product updated successfully</string>
+
+    <string name="btn_label_add_to_cart">ADD TO CART</string>
+    <string name="success_message_item_added_to_cart">Product was added to your cart</string>
+
     <!--END-->
 </resources>
