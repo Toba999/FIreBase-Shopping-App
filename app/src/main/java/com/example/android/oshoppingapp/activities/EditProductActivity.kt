@@ -72,7 +72,6 @@ class EditProductActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun productDetailsSuccess(product: Product) {
-        // Hide Progress dialog.
         hideProgressDialog()
         // Populate the product details in the UI.
         GlideLoader(this).loadProductPicture(
