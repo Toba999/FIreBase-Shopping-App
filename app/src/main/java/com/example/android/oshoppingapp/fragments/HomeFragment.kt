@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.android.oshoppingapp.R
+import com.example.android.oshoppingapp.activities.CartListActivity
 import com.example.android.oshoppingapp.activities.DashboardActivity
 import com.example.android.oshoppingapp.activities.ProductDetailsActivity
 import com.example.android.oshoppingapp.adapters.HomeItemsListAdapter
@@ -33,6 +34,10 @@ class HomeFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding= FragmentHomeBinding.inflate(layoutInflater, container, false)
+
+        binding.ivCart.setOnClickListener {
+            startActivity(Intent(requireActivity(), CartListActivity::class.java))
+        }
         return binding.root
     }
 

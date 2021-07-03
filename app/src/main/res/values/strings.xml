@@ -106,7 +106,18 @@
     <string name="product_updated_success_message">Product updated successfully</string>
 
     <string name="btn_label_add_to_cart">ADD TO CART</string>
+    <string name="btn_label_go_to_cart">GO TO CART</string>
     <string name="success_message_item_added_to_cart">Product was added to your cart</string>
 
+    <string name="title_my_cart">MY CART</string>
+    <string name="no_cart_item_found">No item found in cart!</string>
+    <string name="lbl_subtotal">Subtotal</string>
+    <string name="lbl_shipping_charge">Shipping Charge</string>
+    <string name="lbl_total_amount">Total Amount</string>
+    <string name="btn_lbl_checkout">Checkout</string>
+    <string name="action_cart">My Cart</string>
+    <string name="msg_item_removed_successfully">Item removed successfully</string>
+    <string name="lbl_out_of_stock">Out of stock</string>
+    <string name="msg_for_available_stock">Available stock is %1$s!. You can not add more than stock quantity.</string>
     <!--END-->
 </resources>

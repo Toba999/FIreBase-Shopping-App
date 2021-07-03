@@ -12,7 +12,8 @@ import com.example.android.oshoppingapp.models.Product
 import com.example.android.oshoppingapp.utils.Constants
 import com.example.android.oshoppingapp.utils.GlideLoader
 
-open class MyProductsListAdapter(
+open class
+MyProductsListAdapter(
 
     private val context: Context,
     private var list: ArrayList<Product>,

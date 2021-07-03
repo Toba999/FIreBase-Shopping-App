@@ -30,6 +30,7 @@ object Constants {
 
     const val DEFAULT_CART_QUANTITY : String = "1"
     const val CART_ITEMS :String = "cart_items"
+    const val CART_QUANTITY: String ="cart_quantity"
 
     //A unique code for asking the Read Storage Permission using this we will be check and identify in the method onRequestPermissionsResult in the Base Activity.
     const val READ_STORAGE_PERMISSION_CODE = 2

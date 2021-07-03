@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.oshoppingapp.R
 import com.example.android.oshoppingapp.activities.AddProductActivity
+import com.example.android.oshoppingapp.activities.CartListActivity
 import com.example.android.oshoppingapp.activities.EditProductActivity
 import com.example.android.oshoppingapp.activities.SettingsActivity
 import com.example.android.oshoppingapp.adapters.MyProductsListAdapter
@@ -32,7 +33,7 @@ class ProductsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (requireActivity() as AppCompatActivity).supportActionBar?.show()
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
     }
 
     override fun onCreateView(
@@ -41,25 +42,12 @@ class ProductsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding= FragmentProductsBinding.inflate(layoutInflater, container, false)
+        binding.ivAddProduct.setOnClickListener {
+            startActivity(Intent(requireActivity(), AddProductActivity::class.java))
+        }
         return binding.root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.add_product_menu,menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id =item.itemId
-
-        when(id){
-            R.id.action_add_product -> {
-                startActivity(Intent(activity, AddProductActivity::class.java))
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
     override fun onResume() {
         super.onResume()
 

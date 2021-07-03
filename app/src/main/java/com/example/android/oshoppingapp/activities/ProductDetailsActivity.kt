@@ -1,9 +1,11 @@
 package com.example.android.oshoppingapp.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.android.oshoppingapp.R
 import com.example.android.oshoppingapp.databinding.ActivityProductDetailsBinding
 import com.example.android.oshoppingapp.firestore.FireStoreClass
@@ -49,6 +51,9 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
         getProductDetails()
 
         binding.btnAddToCart.setOnClickListener(this)
+
+        binding.btnGoToCart.setOnClickListener(this)
+
     }
 
     private fun setupActionBar() {
@@ -65,18 +70,14 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
     }
 
     private fun getProductDetails() {
-
         // Show the product dialog
         showProgressDialog(resources.getString(R.string.please_wait))
-
         // Call the function of FirestoreClass to get the product details.
         FireStoreClass().getProductDetails(this@ProductDetailsActivity, mProductId)
     }
 
     fun productDetailsSuccess(product: Product) {
         mProductDetails = product
-        // Hide Progress dialog.
-        hideProgressDialog()
         // Populate the product details in the UI.
         GlideLoader(this@ProductDetailsActivity).loadProductPicture(
             product.image,
@@ -87,6 +88,30 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
         binding.tvProductDetailsPrice.text = "$${product.price}"
         binding.tvProductDetailsDescription.text = product.description
         binding.tvProductDetailsStockQuantity.text = product.stock_quantity
+
+
+        if(product.stock_quantity.toInt() == 0){
+            hideProgressDialog()
+            binding.btnAddToCart.visibility = View.GONE
+
+            binding.tvProductDetailsStockQuantity.text =
+                resources.getString(R.string.lbl_out_of_stock)
+
+            binding.tvProductDetailsStockQuantity.setTextColor(
+                ContextCompat.getColor(
+                    this@ProductDetailsActivity,
+                    R.color.colorSnackBarError
+                )
+            )
+        }else{
+            // There is no need to check the cart list if the product owner himself is seeing the product details.
+            if (FireStoreClass().getCurrentUserID() == product.user_id) {
+                hideProgressDialog()
+            } else {
+                FireStoreClass().checkIfItemExistInCart(this@ProductDetailsActivity, mProductId)
+            }
+        }
+
     }
 
     override fun onClick(v: View?) {
@@ -94,6 +119,9 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
             when(v.id){
                 R.id.btnAddToCart -> {
                     addToCart()
+                }
+                R.id.btnGoToCart -> {
+                    startActivity(Intent(this,CartListActivity::class.java))
                 }
             }
         }
@@ -120,6 +148,18 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
         Toast.makeText(
             this, resources.getString(R.string.success_message_item_added_to_cart),
             Toast.LENGTH_SHORT).show()
+
+        binding.btnAddToCart.visibility= View.GONE
+        binding.btnGoToCart.visibility= View.VISIBLE
+
+    }
+
+    fun productExistsInCart() {
+        hideProgressDialog()
+
+        binding.btnAddToCart.visibility= View.GONE
+        binding.btnGoToCart.visibility= View.VISIBLE
+
     }
 
 }
