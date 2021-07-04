@@ -1,5 +1,6 @@
 package com.example.android.oshoppingapp.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,6 +13,7 @@ import com.example.android.oshoppingapp.databinding.ActivityCartListBinding
 import com.example.android.oshoppingapp.firestore.FireStoreClass
 import com.example.android.oshoppingapp.models.CartItem
 import com.example.android.oshoppingapp.models.Product
+import com.example.android.oshoppingapp.utils.Constants
 
 class CartListActivity : BaseActivity() {
     private lateinit var binding : ActivityCartListBinding
@@ -26,6 +28,11 @@ class CartListActivity : BaseActivity() {
 
         setupActionBar()
 
+        binding.btnCheckout.setOnClickListener {
+            val intent = Intent(this@CartListActivity, AddressListActivity::class.java)
+            intent.putExtra(Constants.EXTRA_SELECT_ADDRESS, true)
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import com.example.android.oshoppingapp.databinding.ActivitySplashBinding
+@Suppress("DEPRECATION")
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding:ActivitySplashBinding
