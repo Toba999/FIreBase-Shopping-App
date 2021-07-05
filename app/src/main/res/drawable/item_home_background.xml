@@ -5,7 +5,7 @@
     <solid android:color="@color/dashboard_item_details_bg"/>
 
     <stroke android:width="@dimen/grey_border_stroke_size"
-        android:color="@color/colorDarkGrey"/>
-    <corners android:radius="10dp"/>
+        android:color="#E1E1E1"/>
+    <corners android:radius="30dp"/>
 
 </shape>

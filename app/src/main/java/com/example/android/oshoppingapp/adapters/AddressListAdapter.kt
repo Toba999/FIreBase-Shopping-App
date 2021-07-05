@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.oshoppingapp.activities.AddEditAddressActivity
+import com.example.android.oshoppingapp.activities.CheckoutActivity
 import com.example.android.oshoppingapp.databinding.ItemAddressLayoutBinding
 import com.example.android.oshoppingapp.databinding.ItemCartLayoutBinding
 import com.example.android.oshoppingapp.models.Address
@@ -40,11 +41,9 @@ open class AddressListAdapter(
 
             if (selectAddress) {
                 holder.itemView.setOnClickListener {
-                    Toast.makeText(
-                        context,
-                        "Selected address : ${model.address}, ${model.zipCode}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    val intent = Intent(context,CheckoutActivity::class.java)
+                    intent.putExtra(Constants.EXTRA_SELECTED_ADDRESS,model)
+                    context.startActivity(intent)
                 }
             }
         }

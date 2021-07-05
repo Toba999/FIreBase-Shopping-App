@@ -21,8 +21,8 @@ import com.example.android.oshoppingapp.utils.GlideLoader
 
 open class CartItemsListAdapter (
     private val context: Context,
-    private var list: ArrayList<CartItem>
-
+    private var list: ArrayList<CartItem>,
+    private var updateCartItems : Boolean
     ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
@@ -51,6 +51,13 @@ open class CartItemsListAdapter (
                 holder.viewBinding.ibRemoveCartItem.visibility = View.GONE
                 holder.viewBinding.ibAddCartItem.visibility = View.GONE
 
+                if (updateCartItems){
+                    holder.viewBinding.ibDeleteCartItem.visibility = View.VISIBLE
+                }else{
+                    holder.viewBinding.ibDeleteCartItem.visibility = View.GONE
+
+                }
+
                 holder.viewBinding.tvCartQuantity.text =
                     context.resources.getString(R.string.lbl_out_of_stock)
 
@@ -61,9 +68,16 @@ open class CartItemsListAdapter (
                     )
                 )
             } else {
-                holder.viewBinding.ibRemoveCartItem.visibility = View.VISIBLE
-                holder.viewBinding.ibAddCartItem.visibility = View.VISIBLE
+                if (updateCartItems) {
+                    holder.viewBinding.ibRemoveCartItem.visibility = View.VISIBLE
+                    holder.viewBinding.ibAddCartItem.visibility = View.VISIBLE
+                    holder.viewBinding.ibDeleteCartItem.visibility = View.VISIBLE
+                } else {
 
+                    holder.viewBinding.ibRemoveCartItem.visibility = View.GONE
+                    holder.viewBinding.ibAddCartItem.visibility = View.GONE
+                    holder.viewBinding.ibDeleteCartItem.visibility = View.GONE
+                }
                 holder.viewBinding.tvCartQuantity.setTextColor(
                     ContextCompat.getColor(
                         context,

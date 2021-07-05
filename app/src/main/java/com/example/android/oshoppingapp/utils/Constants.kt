@@ -13,7 +13,8 @@ object Constants {
     const val USERS: String = "users"
     const val PRODUCTS: String = "products"
     const val ADDRESSES: String = "addresses"
-
+    const val  ORDERS: String ="order"
+    const val CART_ITEMS :String = "cart_items"
 
     //constant variable for products
     const val TITLE : String = "title"
@@ -32,9 +33,10 @@ object Constants {
     const val EXTRA_PRODUCT_OWNER_ID = "extra_product_owner_id"
     const val EXTRA_SELECT_ADDRESS: String = "extra_select_address"
     const val EXTRA_ADDRESS_DETAILS: String = "AddressDetails"
+    const val EXTRA_SELECTED_ADDRESS: String = "extra_selected_address"
+
 
     const val DEFAULT_CART_QUANTITY : String = "1"
-    const val CART_ITEMS :String = "cart_items"
     const val CART_QUANTITY: String ="cart_quantity"
 
     //A unique code for asking the Read Storage Permission using this we will be check and identify in the method onRequestPermissionsResult in the Base Activity.

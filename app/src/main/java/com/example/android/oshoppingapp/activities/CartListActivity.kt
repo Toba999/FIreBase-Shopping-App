@@ -72,9 +72,7 @@ class CartListActivity : BaseActivity() {
                 }
             }
         }
-
         mCartListItems = cartList
-
 
         if (mCartListItems.size > 0){
 
@@ -85,7 +83,7 @@ class CartListActivity : BaseActivity() {
             binding.rvCartItemsList.layoutManager=LinearLayoutManager(this)
             binding.rvCartItemsList.setHasFixedSize(true)
 
-            val cartListAdapter = CartItemsListAdapter(this,cartList)
+            val cartListAdapter = CartItemsListAdapter(this,mCartListItems,true)
             binding.rvCartItemsList.adapter = cartListAdapter
             var subTotal : Double=0.0
 
