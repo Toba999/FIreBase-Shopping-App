@@ -15,6 +15,8 @@ object Constants {
     const val ADDRESSES: String = "addresses"
     const val  ORDERS: String ="order"
     const val CART_ITEMS :String = "cart_items"
+    const val SOLD_PRODUCTS: String = "sold_products"
+
 
     //constant variable for products
     const val TITLE : String = "title"
@@ -34,6 +36,8 @@ object Constants {
     const val EXTRA_SELECT_ADDRESS: String = "extra_select_address"
     const val EXTRA_ADDRESS_DETAILS: String = "AddressDetails"
     const val EXTRA_SELECTED_ADDRESS: String = "extra_selected_address"
+    const val EXTRA_MY_ORDER_DETAILS: String = "extra_my_order_details"
+    const val EXTRA_SOLD_PRODUCT_DETAILS: String = "extra_sold_product_details"
 
 
     const val DEFAULT_CART_QUANTITY : String = "1"

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".fragments.OrdersFragment">
+    android:background="@color/colorOffWhite"
+    tools:context=".fragments.SoldProductsFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_home"
+        android:id="@+id/toolbar_sold_product"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/login_gradient_background"
@@ -23,7 +23,7 @@
             android:gravity="center"
             android:paddingStart="@dimen/toolbar_title_paddingStart"
             android:paddingEnd="0dp"
-            android:text="@string/title_orders"
+            android:text="@string/title_sold_products"
             android:textColor="@color/white"
             android:textSize="@dimen/toolbar_title_text_size"
             android:textStyle="bold" />
@@ -31,10 +31,10 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_my_order_items"
+        android:id="@+id/rv_sold_product_items"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="?attr/actionBarSize"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,15 +42,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_no_orders_found"
+        android:id="@+id/tv_no_sold_products_found"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/no_orders_placed_yet"
-        android:textAlignment="center"
         android:textColor="@color/colorSecondaryText"
+        android:text="@string/no_products_sold_out_yet"
+        android:textAlignment="center"
         android:textSize="@dimen/no_data_found_textSize"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

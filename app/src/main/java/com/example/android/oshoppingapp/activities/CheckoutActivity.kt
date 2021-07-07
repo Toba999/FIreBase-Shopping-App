@@ -30,6 +30,8 @@ class CheckoutActivity : BaseActivity() {
     // A global variable for the Total Amount.
     private var mTotalAmount: Double = 0.0
 
+    private lateinit var mOrderDetails: Order
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCheckoutBinding.inflate(layoutInflater)
@@ -134,7 +136,7 @@ class CheckoutActivity : BaseActivity() {
         // Show the progress dialog.
         showProgressDialog(resources.getString(R.string.please_wait))
 
-        val order = Order(
+        mOrderDetails = Order(
             FireStoreClass().getCurrentUserID(),
             mCartItemsList,
             mAddressDetails!!,
@@ -143,11 +145,17 @@ class CheckoutActivity : BaseActivity() {
             mSubTotal.toString(),
             "10.0", // The Shipping Charge is fixed as $10 for now in our case.
             mTotalAmount.toString(),
+            System.currentTimeMillis()
         )
-        FireStoreClass().placeOrder(this@CheckoutActivity, order)
+        FireStoreClass().placeOrder(this@CheckoutActivity, mOrderDetails)
     }
 
     fun orderPlacedSuccess() {
+        FireStoreClass().updateAllDetails(this@CheckoutActivity, mCartItemsList,mOrderDetails)
+
+    }
+
+    fun allDetailsUpdatedSuccessfully() {
         hideProgressDialog()
         Toast.makeText(this@CheckoutActivity, "Your order placed successfully.", Toast.LENGTH_SHORT)
             .show()

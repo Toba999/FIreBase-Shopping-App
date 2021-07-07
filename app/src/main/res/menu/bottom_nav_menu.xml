@@ -18,6 +18,12 @@
         android:title="@string/title_orders" />
 
     <item
+        android:id="@+id/navigation_sold_products"
+        android:icon="@drawable/ic_vector_sold_products"
+        android:title="@string/title_sold_products" />
+
+
+    <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_profile"
         android:title="@string/my_profile" />

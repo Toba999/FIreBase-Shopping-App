@@ -18,7 +18,7 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
 
     private var mProductId: String = ""
 
-     var mProductOwnerId: String = ""
+    private var mProductOwnerId: String = ""
 
     private lateinit var mProductDetails : Product
 
@@ -132,6 +132,7 @@ class ProductDetailsActivity :BaseActivity(),View.OnClickListener {
     private fun addToCart(){
         val cartItem=CartItem(
             FireStoreClass().getCurrentUserID(),
+            mProductOwnerId,
             mProductId,
             mProductDetails.title,
             mProductDetails.price,
